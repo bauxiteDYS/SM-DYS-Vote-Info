@@ -4,7 +4,7 @@ bool HasVoted[32+1];
 
 public Plugin myinfo =
 {
-	name		= "Dys Voter Info",
+	name		= "Dys Vote Info",
 	author		= "bauxite",
 	description	= "Prints info about who didn't vote",
 	version		= "0.1.0",
