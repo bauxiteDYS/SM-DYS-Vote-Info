@@ -10,7 +10,7 @@ public Plugin myinfo =
 	name		= "Dys Vote Info",
 	author		= "bauxite",
 	description	= "Prints info about who didn't vote",
-	version		= "0.2.0",
+	version		= "0.3.0",
 	url		= "https://github.com/bauxiteDYS/SM-DYS-Voter-Info",
 };
 
@@ -57,29 +57,45 @@ public Action OnCallVote(int client, const char[] command, int argc)
 	HasVoted[client] = true;
 	
 	Vote_Timer = CreateTimer(23.0, PrintNotReady);
-	
+
+	PrintToConsoleAll("################################");
 	PrintToConsoleAll("Player %N started a vote", client);
+	PrintToConsoleAll("################################");
 	
 	return Plugin_Continue;
 }
 
 public Action PrintNotReady(Handle timer)
 {
+	int NotVoted;
+
 	if (!IsValidHandle(timer))
 	{
 		Vote_Started = false;
 		return Plugin_Stop;
 	}
 
+	PrintToConsoleAll("################################");
+	PrintToConsoleAll("Players that have not voted:");
+
 	for (int i = 1; i <= MaxClients; i += 1)
 	{
 		if (HasVoted[i] == false)
 		{
-			PrintToConsoleAll("Player %N Hasn't voted", i);
+			PrintToConsoleAll("%N", i);
+			NotVoted++;
 		}
 	}
-	
+
+	if (NotVoted == 0)
+	{
+		PrintToConoleAll("Everyone has voted!");
+	}
+
+	PrintToConsoleAll("################################");
+
 	Vote_Started = false;
+	NotVoted = 0;
 	
 	if (IsValidHandle(Vote_Timer))
 	{
