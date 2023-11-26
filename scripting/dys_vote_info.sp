@@ -10,7 +10,7 @@ public Plugin myinfo =
 	name		= "Dys Vote Info",
 	author		= "bauxite",
 	description	= "Prints info about who didn't vote",
-	version		= "0.3.0",
+	version		= "0.3.1",
 	url		= "https://github.com/bauxiteDYS/SM-DYS-Voter-Info",
 };
 
@@ -67,7 +67,7 @@ public Action OnCallVote(int client, const char[] command, int argc)
 
 public Action PrintNotReady(Handle timer)
 {
-	int NotVoted;
+	int NotVotedCount;
 
 	if (!IsValidHandle(timer))
 	{
@@ -83,13 +83,13 @@ public Action PrintNotReady(Handle timer)
 		if (HasVoted[i] == false)
 		{
 			PrintToConsoleAll("%N", i);
-			NotVoted++;
+			NotVotedCount++;
 		}
 	}
 
 	if (NotVoted == 0)
 	{
-		PrintToConoleAll("Everyone has voted!");
+		PrintToConsoleAll("Everyone has voted!");
 	}
 
 	PrintToConsoleAll("################################");
