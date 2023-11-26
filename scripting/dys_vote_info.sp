@@ -1,3 +1,4 @@
+/*
 #include <sourcemod>
 
 bool HasVoted[32+1];
@@ -104,3 +105,4 @@ public Action PrintNotReady(Handle timer)
 	
 	return Plugin_Stop;
 }
+*/
