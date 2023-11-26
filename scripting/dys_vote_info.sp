@@ -87,7 +87,7 @@ public Action PrintNotReady(Handle timer)
 		}
 	}
 
-	if (NotVoted == 0)
+	if (NotVotedCount == 0)
 	{
 		PrintToConsoleAll("Everyone has voted!");
 	}
@@ -95,7 +95,7 @@ public Action PrintNotReady(Handle timer)
 	PrintToConsoleAll("################################");
 
 	Vote_Started = false;
-	NotVoted = 0;
+	NotVotedCount = 0;
 	
 	if (IsValidHandle(Vote_Timer))
 	{
